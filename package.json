@@ -1,0 +1,17 @@
+{
+  "name": "chat-interface",
+  "version": "1.0.0",
+  "description": "A simple chat interface with document upload functionality.",
+  "main": "index.js",
+  "scripts": {
+    "start": "http-server . -p 8000",
+    "dev": "nodemon -w . -e html,js,css -x 'http-server . -p 8000'"
+  },
+  "keywords": ["chat", "document-upload", "frontend"],
+  "author": "joshuanh2",
+  "license": "ISC",
+  "devDependencies": {
+    "http-server": "^0.12.3",
+    "nodemon": "^2.0.7"
+  }
+}
