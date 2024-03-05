@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Function to send a message
     var sendMessage = function() {
         var userMessage = document.getElementById('message-input').value;
         if (!userMessage.trim()) return; // Avoid sending empty messages
@@ -32,10 +33,24 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('Uploading:', file.name);
         // Here, you would typically use FormData and XMLHttpRequest or fetch to send the file to your server
     });
-});
 
-// Function to scroll chat to the bottom
-function scrollChatToBottom() {
-    var chatOutput = document.getElementById('chat-output');
-    chatOutput.scrollTop = chatOutput.scrollHeight;
-}
+    // Function to scroll chat to the bottom
+    function scrollChatToBottom() {
+        var chatOutput = document.getElementById('chat-output');
+        chatOutput.scrollTop = chatOutput.scrollHeight;
+    }
+
+    // Function to toggle the collapse state of sections
+    window.toggleCollapse = function(sectionId) {
+        const section = document.getElementById(sectionId);
+        const isCollapsed = section.classList.toggle('collapsed');
+
+        // Update button label based on the collapsed state
+        const button = section.querySelector('.collapse-btn');
+        if (isCollapsed) {
+            button.textContent = sectionId === 'chat-history-section' ? 'Open History' : 'Open Uploads';
+        } else {
+            button.textContent = sectionId === 'chat-history-section' ? 'Close History' : 'Close Uploads';
+        }
+    };
+});
