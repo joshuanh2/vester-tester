@@ -3,42 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat Interface with Document Upload</title>
+    <title>Chat Interface with GPT</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="main-container">
-        <!-- Chat History Section (Collapsible) -->
-        <div id="chat-history-section" class="collapsible-section">
-            <div class="content">Chat history goes here</div>
-            <button class="collapse-btn" data-target="chat-history-section">Open History</button>
-        </div>
-
         <!-- Chat Section -->
         <div id="chat-container">
-            <!-- ... Your chat container as before ... -->
-            <button id="send-message-button">↑</button> <!-- Make sure the ID matches your JavaScript -->
-        </div>
-
-        <!-- Upload Section (Collapsible) -->
-        <div id="upload-section" class="collapsible-section">
-            <div class="content">
-                <!-- ... Your upload section as before ... -->
-                <button type="button" id="upload-button">Upload</button> <!-- Added an ID for JavaScript reference -->
-            </div>
-            <button class="collapse-btn" data-target="upload-section">Open Uploads</button>
+            <h2>Chat with GPT</h2>
+            <div id="chat-output"></div> <!-- Messages will appear here -->
+            <input type="text" id="message-input" placeholder="Ask me anything...">
+            <button id="send-message-button">Send</button>
         </div>
     </div>
     <script src="script.js"></script>
-
-    <script>
-        // You can move your inline event handler to script.js
-        // Alternatively, if you want to keep it here for quick reference:
-        document.querySelectorAll('.collapse-btn').forEach(button => {
-            button.addEventListener('click', () => {
-                toggleCollapse(button.getAttribute('data-target'));
-            });
-        });
-    </script>
 </body>
 </html>
