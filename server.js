@@ -1,56 +1,53 @@
+<script>
 document.addEventListener('DOMContentLoaded', function() {
-    var sendMessageButton = document.getElementById('send-message-button');
-    var chatOutput = document.getElementById('chat-output');
-    var messageInput = document.getElementById('message-input'); // Get the message input element
-
-    if (sendMessageButton) {
-        sendMessageButton.addEventListener('click', sendMessage);
-    }
-
-    // Event listener for the Enter key in the message input
-    messageInput.addEventListener('keypress', function(event) {
-        if (event.key === 'Enter') {
-            event.preventDefault(); // Prevent the default action (form submission)
-            sendMessage();
-        }
-    });
-
+    // Send message functionality
     function sendMessage() {
-        var userMessage = messageInput.value; // Use the messageInput variable
+        var userMessage = document.getElementById('message-input').value;
         if (!userMessage.trim()) return; // Avoid sending empty messages
-        messageInput.value = ''; // Clear input after sending
-
+        document.getElementById('message-input').value = ''; // Clear input after sending
+        
+        var chatOutput = document.getElementById('chat-output');
         // Display user message immediately
         chatOutput.innerHTML += '<div class="user-message" style="text-align: right; color: black;"><strong>You:</strong> ' + userMessage + '</div>';
 
         // Make an API call to your backend
-        fetch('https://your-backend-url/api/chat', { // <-- Replace with your actual backend URL
+        fetch('https://vester-on-gpt-4-granthamblen.replit.app/api/chat', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({ message: userMessage })
         })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok: ' + response.statusText);
-            }
-            return response.json();
-        })
+        .then(response => response.json())
         .then(data => {
             // Display the GPT response in the chat
-            chatOutput.innerHTML += '<div class="gpt-response" style="text-align: left; color: blue;"><strong>GPT:</strong> ' + data.message + '</div>';
-            scrollChatToBottom();
+            chatOutput.innerHTML += '<div class="chatbot-response" style="text-align: left; color: black;"><strong>Vester:</strong> ' + data.message + '</div>';
+            chatOutput.scrollTop = chatOutput.scrollHeight;
         })
-        .catch((error) => {
+        .catch(error => {
             console.error('Error:', error);
-            chatOutput.innerHTML += '<div class="error-response" style="text-align: left; color: red;"><strong>Error:</strong> Unable to get response</div>';
-            scrollChatToBottom();
+            chatOutput.innerHTML += '<div class="error-message" style="color: red;"><strong>Error:</strong> Could not send message</div>';
         });
     }
 
-    // Function to scroll chat to the bottom
-    function scrollChatToBottom() {
-        chatOutput.scrollTop = chatOutput.scrollHeight;
-    }
+    // Event listener for the send message button
+    document.getElementById('send-message').addEventListener('click', sendMessage);
+
+    // Event listener for pressing the Enter key within the message input
+    document.getElementById('message-input').addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+            event.preventDefault(); // Prevent the default action to avoid submitting the form (if any)
+            sendMessage();
+        }
+    });
+
+    // Functionality for example questions
+    document.querySelectorAll('.example-question').forEach(function(button) {
+        button.addEventListener('click', function() {
+            var questionText = this.innerText;
+            document.getElementById('message-input').value = questionText;
+            sendMessage();
+        });
+    });
 });
+</script>
