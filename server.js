@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
-    var sendMessageButton = document.getElementById('send-message-button'); // Assuming you have a button with this ID for sending messages
+    // Send message functionality
+    var sendMessageButton = document.getElementById('send-message-button');
     if (sendMessageButton) {
         sendMessageButton.addEventListener('click', sendMessage);
     }
@@ -39,26 +40,20 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Function to scroll chat to the bottom
-    function scrollChatToBottom() {
-        var chatOutput = document.getElementById('chat-output');
-        chatOutput.scrollTop = chatOutput.scrollHeight;
-    }
-});
-
-
     // Financial document upload functionality
-    document.querySelector('button[type="button"]').addEventListener('click', function() {
-        var fileInput = document.getElementById('financial-doc-upload');
-        var file = fileInput.files[0]; // Get the file from the input
-        if (!file) {
-            alert('Please select a file to upload.');
-            return;
-        }
-        // Implement the file upload logic here
-        console.log('Uploading:', file.name);
-        // Here, you would typically use FormData and XMLHttpRequest or fetch to send the file to your server
-    });
+    var uploadButton = document.querySelector('button[type="button"]');
+    if (uploadButton) {
+        uploadButton.addEventListener('click', function() {
+            var fileInput = document.getElementById('financial-doc-upload');
+            var file = fileInput.files[0]; // Get the file from the input
+            if (!file) {
+                alert('Please select a file to upload.');
+                return;
+            }
+            console.log('Uploading:', file.name);
+            // Here, implement the file upload logic
+        });
+    }
 
     // Function to scroll chat to the bottom
     function scrollChatToBottom() {
