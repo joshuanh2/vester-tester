@@ -13,7 +13,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
         chatOutput.innerHTML += '<div class="user-message"><strong>You:</strong> ' + userMessage + '</div>';
 
-        fetch('http://localhost:8080/api/chat', { // <-- Make sure this points to your Flask server
+        fetch('
+https://vester-on-gpt-4-granthamblen.replit.app
+', { // <-- Make sure this points to your Flask server
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
