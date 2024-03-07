@@ -8,35 +8,28 @@
 </head>
 <body>
     <div id="main-container">
-        <!-- Chat History Section (Collapsible) -->
         <div id="chat-history-section" class="collapsible-section">
             <div class="content">Chat history goes here</div>
             <button class="collapse-btn" onclick="toggleCollapse('chat-history-section')">Open History</button>
         </div>
-        <!-- Chat Section -->
         <div id="chat-container">
-            <h2 style="color: #0081C6; text-align: left; font-size: 30px">vester</h2>
-            <div id="chat-output" style="height: 70%; overflow-y: auto; border: 2px solid #ccc; padding: 5px; margin-bottom: 10px; background-color: white; border-radius: 10px;"></div>
-            <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 10px;">
-                <input type="text" id="message-input" placeholder="Finance can be difficult! Let me help..." style="width: 70%; padding: 5px; border: 2px solid #ccc; border-radius: 4px; margin-right: 5px;">
-                <button id="send-message" style="width: 35px; height: 35px; background-color: #0081C6; color: white; border: none; padding: 3px 10px; border-radius: 4px; cursor: pointer; font-size: 18px; align-self: center;">↑</button>
+            <h2>Vester</h2>
+            <div id="chat-output"></div>
+            <div class="input-area">
+                <input type="text" id="message-input" placeholder="Finance can be difficult! Let me help...">
+                <button id="send-message">↑</button>
             </div>
         </div>
-        <!-- Upload Section (Collapsible) -->
         <div id="upload-section" class="collapsible-section">
             <div class="content">
-                <h3 style="color: #0081C6; margin-bottom: 20px;">Upload Financial Document</h3>
-                <p style="margin-bottom: 20px;">Upload any file type, for example, PDF or a screenshot of financial information.</p>
-                <input type="file" id="financial-doc-upload" name="financial-doc-upload" style="width: 100%; margin-bottom: 20px;">
-                <button type="button" style="width: 100%; padding: 10px; background-color: #0081C6; color: white; border: none; border-radius: 4px; cursor: pointer;">Upload</button>
-                <p style="margin-top: 20px;">For reference, you can check Vester's Example Documents below:</p>
-                <select id="example-documents" name="example-documents" style="width: 100%; padding: 10px; margin-top: 10px; border-radius: 4px; background-color: white; cursor: pointer;">
-                    <option value="" disabled selected>Vester's Example Files :page_with_curl:</option>
-                    <option value="bank-statement">Bank Statement</option>
-                    <option value="pay-stub">Pay Stub</option>
-                    <option value="tax-return">Tax Return</option>
-                    <option value="investment-summary">Investment Summary</option>
-                    <option value="mortgage-statement">Mortgage Statement</option>
+                <h3>Upload Financial Document</h3>
+                <p>Upload any file type, for example, PDF or a screenshot of financial information.</p>
+                <input type="file" id="financial-doc-upload" name="financial-doc-upload">
+                <button type="button" class="upload-btn">Upload</button>
+                <p>For reference, you can check Vester's Example Documents below:</p>
+                <select id="example-documents" name="example-documents">
+                    <option value="" disabled selected>Vester's Example Files</option>
+                    <!-- Other options -->
                 </select>
             </div>
             <button class="collapse-btn" onclick="toggleCollapse('upload-section')">Open Uploads</button>
