@@ -5,10 +5,10 @@
     height: 100vh;
 }
 
-/* Collapsible section styling */
+/* Collapsible section styling - Adjust the width to give more space to the chat container */
 .collapsible-section {
     position: relative;
-    width: 15%;
+    width: 10%; /* Decreased from 15% to 10% to allocate more space to chat container */
     transition: width 0.3s ease;
     overflow-x: hidden;
     float: left; /* Side by side arrangement */
@@ -19,15 +19,15 @@
     overflow: hidden;
 }
 
-/* Chat container adjustments */
+/* Chat container adjustments - Increase the width to take up more space */
 #chat-container {
     float: left;
-    width: 70%;
+    width: 80%; /* Increased from 70% to 80% */
     transition: width 0.3s ease;
     padding: 10px;
 }
 
-/* Collapse button adjustments */
+/* Adjustments to ensure collapse buttons and sections behave responsively */
 .collapse-btn {
     position: absolute;
     top: 0;
@@ -39,13 +39,7 @@
     width: auto;
 }
 
-#chat-history-section .collapse-btn {
-    right: 0;
-    transform: translateX(100%);
-}
-
-#upload-section .collapse-btn {
-    left: 0;
+#chat-history-section .collapse-btn, #upload-section .collapse-btn {
     transform: translateX(-100%);
 }
 
@@ -61,15 +55,7 @@
     transform: translateX(0%);
 }
 
-#chat-history-section.collapsed .collapse-btn {
-    right: auto;
-    left: 0;
-    transform: scaleX(-1);
-}
-
-#upload-section.collapsed .collapse-btn {
-    left: auto;
-    right: 0;
+#chat-history-section.collapsed .collapse-btn, #upload-section.collapsed .collapse-btn {
     transform: scaleX(-1);
 }
 
