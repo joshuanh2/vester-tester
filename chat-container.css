@@ -1,70 +1,97 @@
 /* Main container styling */
 #main-container {
     display: flex;
+    flex-direction: column; /* Stack children vertically */
     width: 100%;
     height: 100vh;
+    padding: 20px; /* Add padding to prevent content from touching the edges */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
 }
 
-/* Collapsible section styling - Adjust the width to give more space to the chat container */
+/* Collapsible section styling - now stacking vertically so width is 100% */
 .collapsible-section {
-    position: relative;
-    width: 10%; /* Decreased from 15% to 10% to allocate more space to chat container */
-    transition: width 0.3s ease;
-    overflow-x: hidden;
-    float: left; /* Side by side arrangement */
+    width: 100%; /* Full width as they are now stacking */
+    margin-bottom: 10px; /* Add some space between sections */
 }
 
 .collapsible-section .content {
     padding: 10px;
-    overflow: hidden;
 }
 
-/* Chat container adjustments - Increase the width to take up more space */
+/* Chat container adjustments - make it take most of the vertical space */
 #chat-container {
-    float: left;
-    width: 80%; /* Increased from 70% to 80% */
-    transition: width 0.3s ease;
-    padding: 10px;
+    flex-grow: 1; /* Takes up all available vertical space */
+    background-color: #F4F4F4;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow: auto; /* Adds scrollbar if content overflows */
+    border: 8px solid #007BFF;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Adjustments to ensure collapse buttons and sections behave responsively */
-.collapse-btn {
-    position: absolute;
-    top: 0;
+/* Adjust the chat output to take most of the container's height */
+#chat-output {
+    height: 75vh; /* Adjust height as desired, vh units for viewport height proportion */
+    overflow-y: auto;
+    border: 2px solid #ccc;
+    padding: 10px;
+    margin-bottom: 15px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+/* Ensure buttons and inputs are adequately sized and spaced */
+#message-input {
+    width: calc(100% - 50px); /* Subtract the width of the send button plus some margin */
+    padding: 10px;
+    margin-right: 10px; /* Add space between input and button */
+    border: 2px solid #ccc;
+    border-radius: 4px;
+}
+
+#send-message {
+    width: 40px;
+    height: 40px;
+    background-color: #0056b3;
+    color: white;
+    border: none;
+    padding: 0; /* Adjust padding to 0 since the content is just an arrow */
+    border-radius: 4px;
     cursor: pointer;
+}
+
+/* Upload section styling */
+#upload-section .content {
+    /* Style as needed */
+}
+
+/* Collapse button adjustments - No need for positioning as they are now in a vertical layout */
+.collapse-btn {
+    width: 100%; /* Full width */
     background-color: #0081C6;
     color: white;
-    padding: 5px 10px;
+    padding: 10px;
     border: none;
-    width: auto;
+    cursor: pointer;
 }
 
-#chat-history-section .collapse-btn, #upload-section .collapse-btn {
-    transform: translateX(-100%);
-}
-
-.collapsed .content {
-    display: none;
-}
-
-.collapsed {
-    width: 0%;
-}
-
-.collapsed .collapse-btn {
-    transform: translateX(0%);
-}
-
-#chat-history-section.collapsed .collapse-btn, #upload-section.collapsed .collapse-btn {
-    transform: scaleX(-1);
-}
-
-/* Additional styling for visibility and aesthetics */
-.chat-section, .upload-section {
-    height: 100%; /* Ensure full height */
-}
-
-/* Ensure text and buttons are visible and not overlapped */
-.content, .collapse-btn {
-    z-index: 1;
+/* Responsive adjustments - adjust for small screens */
+@media (max-width: 768px) {
+    #main-container {
+        padding: 10px; /* Reduce padding on smaller screens */
+    }
+    #chat-container {
+        padding: 10px; /* Reduce padding on smaller screens */
+    }
+    #chat-output {
+        height: 60vh; /* Adjust chat output height on smaller screens */
+    }
+    #message-input {
+        width: calc(100% - 60px); /* Adjust input width on smaller screens */
+    }
+    #send-message {
+        width: 50px; /* Adjust send button size on smaller screens */
+        height: 50px;
+    }
 }
