@@ -1,84 +1,85 @@
+/* Reset some default styles for consistency across browsers */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
 /* Main container styling */
 #main-container {
     display: flex;
+    flex-direction: column; /* Stack children vertically */
     width: 100%;
-    height: 100vh;
+    height: 100%;
 }
 
-/* Collapsible section styling */
-.collapsible-section {
-    position: relative;
-    width: 15%;
-    transition: width 0.3s ease;
-    overflow-x: hidden;
-    float: left; /* Side by side arrangement */
-}
-
-.collapsible-section .content {
-    padding: 10px;
-    overflow: hidden;
-}
-
-/* Chat container adjustments */
+/* Chat container takes most of the screen with a large portion of the height */
 #chat-container {
-    float: left;
-    width: 70%;
-    transition: width 0.3s ease;
-    padding: 10px;
+    width: 100%; /* Take the full width of its container */
+    flex-grow: 1; /* Grow to use available space */
+    padding: 20px; /* Spacing inside the chat container */
+    background-color: #F4F4F4; /* Light grey background */
+    border-radius: 8px; /* Rounded corners */
+    margin: 10px; /* Margin around the container */
+    display: flex;
+    flex-direction: column; /* Stack chat output and input area vertically */
 }
 
-/* Collapse button adjustments */
-.collapse-btn {
-    position: absolute;
-    top: 0;
-    cursor: pointer;
-    background-color: #0081C6;
-    color: white;
-    padding: 5px 10px;
-    border: none;
-    width: auto;
+/* Chat output styling */
+#chat-output {
+    flex-grow: 1; /* Take up available space */
+    overflow-y: auto; /* Scrollbar for overflow content */
+    background-color: white; /* White background for chat output */
+    border: 2px solid #ccc; /* Border for chat output */
+    border-radius: 8px; /* Rounded corners for chat output */
+    padding: 10px; /* Padding inside chat output */
+    margin-bottom: 10px; /* Margin between chat output and input area */
 }
 
-#chat-history-section .collapse-btn {
-    right: 0;
-    transform: translateX(100%);
+/* User message styling */
+.user-message {
+    margin: 5px 0;
+    padding: 8px;
+    background-color: #D3D3D3; /* Light grey for user messages */
+    border-radius: 4px;
+    text-align: right;
 }
 
-#upload-section .collapse-btn {
-    left: 0;
-    transform: translateX(-100%);
+/* GPT response styling */
+.gpt-response {
+    margin: 5px 0;
+    padding: 8px;
+    background-color: #E3E3E3; /* Slightly different grey for GPT messages */
+    border-radius: 4px;
+    text-align: left;
 }
 
-.collapsed .content {
-    display: none;
+/* Input area styling */
+.input-area {
+    display: flex; /* Align input and button horizontally */
 }
 
-.collapsed {
-    width: 0%;
+/* Message input styling */
+#message-input {
+    flex: 1; /* Allow input to grow and fill available space */
+    margin-right: 8px; /* Margin between input and button */
+    padding: 8px; /* Padding inside input */
+    border: 2px solid #ccc; /* Border for input */
+    border-radius: 4px; /* Rounded corners for input */
 }
 
-.collapsed .collapse-btn {
-    transform: translateX(0%);
-}
-
-#chat-history-section.collapsed .collapse-btn {
-    right: auto;
-    left: 0;
-    transform: scaleX(-1);
-}
-
-#upload-section.collapsed .collapse-btn {
-    left: auto;
-    right: 0;
-    transform: scaleX(-1);
-}
-
-/* Additional styling for visibility and aesthetics */
-.chat-section, .upload-section {
-    height: 100%; /* Ensure full height */
-}
-
-/* Ensure text and buttons are visible and not overlapped */
-.content, .collapse-btn {
-    z-index: 1;
+/* Send message button styling */
+#send-message {
+    padding: 8px 16px; /* Padding inside send button */
+    background-color: #0081C6; /* Button background color */
+    color: white; /* Button text color */
+    border: none; /* No border */
+    border-radius: 4px; /* Rounded corners for button */
+    cursor: pointer; /* Pointer cursor on hover */
 }
