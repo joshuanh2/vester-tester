@@ -12,13 +12,13 @@ document.addEventListener('DOMContentLoaded', function() {
         chatOutput.innerHTML += '<div class="user-message" style="text-align: right; color: black;"><strong>You:</strong> ' + userMessage + '</div>';
         
         // Use the backend URL in the fetch call to send the user message
-        fetch(`${backendUrl}/api/chat`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ message: userMessage })
-        })
+        fetch('https://vester-on-gpt-4-granthamblen.replit.app/api/chat', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ message: userMessage })
+})
         .then(response => response.json())
         .then(data => {
             // Display the GPT response in the chat
